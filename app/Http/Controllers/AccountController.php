@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use App\User;
+use App\Post;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller {
 

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Post;
 
 class User extends Authenticatable
 {
@@ -16,15 +17,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'pseudo', 'avatar', 'firstname', 'name', 'email', 'password',
+        'avatar', 'cover','firstname','name','pseudo', 'email', 'password',
     ];
-
-    public function getAvatar() {
-        if (!$this->avatar) {
-                    return '/img/avatar-vide.png';
-                }
-                return $this->avatar;
-        }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -43,4 +37,58 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAvatar() {
+        if (!$this->avatar) {
+                    return '/img/avatar-vide.png';
+                }
+                return $this->avatar;
+    }
+
+    public function getCover() {
+        if (!$this->cover) {
+                    return '/img/banner.jpeg';
+                }
+                return $this->cover;
+    }
+
+    public function amisAll() {
+          return $this->belongsToMany(\App\User::class, 'amis','user_id', 'amis_id')->withPivot('active')->withPivot('created_at');
+    }
+
+    public function amisActive() {
+        return $this->belongsToMany(\App\User::class, 'amis','user_id', 'amis_id')
+            ->withPivot('active')->withPivot('created_at')
+            ->wherePivot('active', true);
+    }
+
+    public function amisNotActive() {
+        return $this->belongsToMany(\App\User::class ,'amis','user_id', 'amis_id')
+            ->withPivot('active')->withPivot('created_at')
+            ->wherePivot('active', false);
+    }
+
+    public function amisWait() {
+        return $this->belongsToMany(\App\User::class ,'amis','amis_id', 'user_id')
+            ->withPivot('active')->withPivot('created_at')
+            ->wherePivot('active', false);
+    }
+
+    public function isFriend(User $user) {
+        return $user->hasMany(Amis::class,'user_id')->where('amis_id', $this->id)
+        ->where('active', true)->count();
+    }
+    public function demandeAmis(User $user) {
+        return $user->hasMany(Amis::class,'amis_id')->where('user_id', $this->id)
+        ->where('active', false)->count();
+    }
+    public function demandeRecu(User $user) {
+        return $user->hasMany(Amis::class,'user_id')->where('amis_id', $this->id)
+        ->where('active', false)->count();
+    }
+
+    public function isLike(Post $post) {
+    return $post->hasMany(Like::class,'post_id')->where('user_id', $this->id)->count();
+    }
+
 }

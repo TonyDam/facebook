@@ -64,6 +64,8 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
+                                <a class="dropdown-item" href="{{ route('profil', Auth::user()->id ) }}">Profil</a>
+
                                 <a class="dropdown-item" href="{{ route('account') }}">Account</a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
