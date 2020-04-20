@@ -6,65 +6,30 @@
 
         <title>Facebouk</title>
 
-        <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
-        <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-                width: 100%;
-                background: url(../img/bg.jpg)no-repeat;
-                background-position: center;
-                background: cover;
-                background-size: 100%;
-                color: white;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
+            html, body { background-color: #fff; color: #636b6f; font-family: 'Montserrat', sans-serif; font-weight: 200; height: 100vh; margin: 0; width: 100%; background: url(../img/bg.jpg)no-repeat; background-position: center; background: cover; background-size: 100%; color: white; }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+            .full-height { height: 100vh; }
 
-            .position-ref {
-                position: relative;
-            }
+            .flex-center { align-items: center; display: flex; justify-content: center; }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+            .position-ref { position: relative; }
 
-            .content {
-                text-align: center;
-            }
+            .top-right { position: absolute; right: 10px; top: 18px; }
 
-            .title {
-                font-size: 124px;
-            }
+            .content { text-align: center; }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+            .title { font-size: 124px; }
+
+            .links > a { color: #636b6f; padding: 0 25px; font-size: 13px; letter-spacing: .1rem; text-decoration: none; text-transform: uppercase; }
 
             .text-left { text-align: left!important; }
+
         </style>
+
     </head>
     <body>
         <div class="flex-center position-ref full-height">
