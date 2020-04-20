@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-Laravel Facebook - Profil
+Facebook - Profil
 @endsection
 
 @section('style')

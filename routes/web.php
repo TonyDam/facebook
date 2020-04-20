@@ -20,6 +20,10 @@ Route::get('/home/{id}', 'PostController@destroy')->middleware('auth')->name('de
 Route::get('/profil/{slug}/amis_add', 'ProfilController@amis_add')->name('profil.amisAdd');
 Route::get('/profil/{slug}/amis_invit', 'ProfilController@amis_invit')->name('profil.amisInvit');
 Route::get('/profil/{slug}/amis_delete', 'ProfilController@amis_delete')->name('profil.amisDelete');
+Route::get('/home/{id}/like', 'PostController@like')->name('post.like');
+Route::get('/home/{id}/unlike', 'PostController@unlike')->name('post.unlike');
+Route::get('/com/{id}', 'ComController@destroyCom')->middleware('auth')->name('destroyCom.com');
+Route::get('/search', 'SearchController@index')->name('search');
 
 
 // POST
@@ -28,3 +32,4 @@ Route::post('/account', 'AccountController@destroyAvatar')->middleware('auth')->
 Route::post('profil/{slug}', 'ProfilController@updateAvatar')->middleware('auth')->name('profil.updateAvatar');
 Route::post('profil', 'ProfilController@updateCover')->middleware('auth')->name('profil.updateCover');
 Route::post('/home', 'PostController@create')->middleware('auth')->name('create.post');
+Route::post('/', 'ComController@createCom')->middleware('auth')->name('createCom.com');

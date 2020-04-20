@@ -13,8 +13,4 @@ class Post extends Model {
         return $this->hasMany(Like::class,'post_id');
     }
 
-    public function coms() {
-        return $this->hasMany(Post::class, 'parent_id');
-    }
-
 }
